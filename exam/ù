@@ -22,11 +22,19 @@ int main() {
     // Verifica del comportamento del clone
     // Esempio: stampa il nome dell'oggetto clonato
     std::cout << "Cloned Item says: " << std::endl;
+    mm.Print();
+
 
     // Creazione di una copia dell'oggetto originale utilizzando il costruttore di copie
-    PC pippo(mm);
+    PC copiaOggetto(pluto);
 
-    pippo.Print();
+    copiaOggetto.Print();
+    // Verifica se la copia contiene gli stessi valori dell'oggetto originale
+    //if (pluto == copiaOggetto) {
+        //std::cout << "La copia contiene gli stessi valori dell'oggetto originale." << std::endl;
+    //} else {
+        //std::cout << "La copia NON contiene gli stessi valori dell'oggetto originale." << std::endl;
+    //}
 }
 
 

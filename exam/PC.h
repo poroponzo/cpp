@@ -15,6 +15,9 @@ PC();
 // alternative constructor che non worka
 PC(std::string, IP, int);
 
+//copy constructor
+PC(const PC& other);
+
 //print identificatore e ip
 void Print() const override;
 

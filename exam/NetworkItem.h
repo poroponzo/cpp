@@ -15,7 +15,7 @@ NetworkItem();
 //constructor using id and ip
 NetworkItem(std::string, IP);
 
-// Dichiarazione del costruttore di copia
+// Dichiarazione del costruttore di copie
 NetworkItem(const NetworkItem& other); 
 
 // print and size methods 

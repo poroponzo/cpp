@@ -15,6 +15,9 @@ mem(new int[memory]) {
     mem[2] = 3;
 } 
 
+//copy constructor
+PC::PC(const PC& other) : NetworkItem(other) , mem(new int(*(other.mem))), memsize(memsize){
+}
 
 // method print implementation
 void PC::Print() const {
