@@ -21,15 +21,16 @@ void Print() const override;
 // print del size
 int Size() const;
 
+//copy constructor
+PC(const PC& other);
+
+
 // cloning and referring to Networkitem
 NetworkItem* clone() const;
 
 // default destructor
-~PC(); 
+~PC();
 
-
-
-//size mi deve dare mem
 };
 
 #endif

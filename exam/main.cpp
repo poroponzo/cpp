@@ -6,7 +6,7 @@ int main() {
     IP a;
     a.print();
 
-    IP b(192,168,1,1);
+    IP b(192,168,1,201);
     b.print();
 
     PC nn;
@@ -17,12 +17,18 @@ int main() {
     mm.Print();
     std::cout << "The ammount of allocated memory is: "<< mm.Size() << " bytes" << std::endl;
 
-    NetworkItem* clonedItem = mm.clone();
+    std::cout << " ora testo il costruttore di copia" << std::endl;
+    std::cout << " lo richiamo implicitamente quando inzializzo una variabile con un PC:"<< std::endl;
+    
+    PC originalPC;
+    
+    std::cout << "printo pc originale" << std::endl;
+    originalPC.Print();
 
-    // Verifica del comportamento del clone
-    // Esempio: stampa il nome dell'oggetto clonato
-    std::cout << "Cloned Item says: " << std::endl;
-    mm.Print();
+    std::cout << "copio, e printo la copia" << std::endl;
+    PC copiedPC = originalPC;
+    copiedPC.Print();
+
 
 
 }
