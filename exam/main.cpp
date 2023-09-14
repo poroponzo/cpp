@@ -1,6 +1,7 @@
 #include "IP.h"
 #include "NetworkItem.h"
 #include "PC.h"
+#include "Net.h"
 
 int main() {
     IP a;
@@ -39,7 +40,8 @@ int main() {
     PC gibbone = mm;
     gibbone.Print();
 
-
+    std::cout << "provo a creare una net default" << std::endl;
+    Net rete;
 
     
 }

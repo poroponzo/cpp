@@ -39,6 +39,7 @@ std::list<NetworkItem*> NetItemList;
 // mi serve un corrispettivo di memsize per sapere uanto è lunga?
 // posso avere due Ip uguali?
 
+//mi serve sapere quanto è lunga la lista? forse no perché è iterabile con i:
 
 public:
 
@@ -52,6 +53,9 @@ Net(std::string, IP, std::list<IP>);
 // copy constructor
 Net(const Net& other);
 
+// cloning and referring to Networkitem
+NetworkItem* clone() const;
+
 // destructor
 ~Net();
 
@@ -64,6 +68,7 @@ int Size() const;
 bool AddCopy(const NetworkItem* item);
 bool Add(NetworkItem* item);
 bool remove(const IP ipremove);
+
 
 
 };

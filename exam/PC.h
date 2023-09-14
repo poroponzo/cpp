@@ -12,7 +12,7 @@ public:
 // default costructor
 PC(); 
 
-// alternative constructor che non worka
+// alternative constructor 
 PC(std::string, IP, int);
 
 //copy constructor
