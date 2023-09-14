@@ -21,16 +21,27 @@ int main() {
     mm.Print();
     std::cout << "The ammount of allocated memory is: "<< mm.Size() << " bytes" << std::endl;
 
-    NetworkItem* clonedItem = mm.clone();
+    mm.clone();
+    //gg.Print();
 
     // Verifica del comportamento del clone
     // Esempio: stampa il nome dell'oggetto clonato
-    std::cout << "Cloned Item says: " << std::endl;
+    //std::cout << "Cloned Item says: " << std::endl;
+    //*clonedItem.Print();
 
     // Creazione di una copia dell'oggetto originale utilizzando il costruttore di copie
+    std::cout << "Copied Item says: " << std::endl;
     PC pippo(mm);
-
     pippo.Print();
+
+    // richiamo il costruttore di copie inizializzando una nuova variabile con un oggetto della classe PC
+    std::cout << "Copied2 Item says: " << std::endl;
+    PC gibbone = mm;
+    gibbone.Print();
+
+
+
+    
 }
 
 
