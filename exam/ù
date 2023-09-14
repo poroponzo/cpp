@@ -1,40 +1,40 @@
-#include "IP.h"
+#ifndef PC_H
+#define PC_H
+#include <iostream>
 #include "NetworkItem.h"
-#include "PC.h"
 
-int main() {
-    IP a;
-    a.print();
+// eredita attributi pubblici di NetworkItem
+class PC : public NetworkItem{
+int *mem;
+int memsize;
 
-    IP b(192,168,1,1);
-    b.print();
+public:
+// default costructor
+PC(); 
 
-    PC nn;
-    nn.Print();
+// alternative constructor che non worka
+PC(std::string, IP, int);
 
-    std::string pluto = "plutone";
-    PC mm(pluto, a, 3);
-    mm.Print();
-    std::cout << "The ammount of allocated memory is: "<< mm.Size() << " bytes" << std::endl;
+//copy constructor
+PC(const PC& other);
 
-    NetworkItem* clonedItem = mm.clone();
+//print identificatore e ip
+void Print() const override;
 
-    // Verifica del comportamento del clone
-    // Esempio: stampa il nome dell'oggetto clonato
-    std::cout << "Cloned Item says: " << std::endl;
-    mm.Print();
+// print del size
+int Size() const;
 
+PC& SetMemory(int *memory, int size) {
 
-    // Creazione di una copia dell'oggetto originale utilizzando il costruttore di copie
-    PC copiaOggetto(pluto);
+// cloning and referring to Networkitem
+NetworkItem* clone() const;
 
-    copiaOggetto.Print();
-    // Verifica se la copia contiene gli stessi valori dell'oggetto originale
-    //if (pluto == copiaOggetto) {
-        //std::cout << "La copia contiene gli stessi valori dell'oggetto originale." << std::endl;
-    //} else {
-        //std::cout << "La copia NON contiene gli stessi valori dell'oggetto originale." << std::endl;
-    //}
-}
+// default destructor
+~PC(); 
 
 
+
+//size mi deve dare mem
+};
+
+#endif

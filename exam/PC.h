@@ -24,6 +24,9 @@ void Print() const override;
 // print del size
 int Size() const;
 
+// metodo per settare memoria
+PC& SetMemory(int *memory, int size);
+
 // cloning and referring to Networkitem
 NetworkItem* clone() const;
 
