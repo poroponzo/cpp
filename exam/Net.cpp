@@ -26,13 +26,24 @@ NetItemList({}){
 
 // print method for the Net class (override 'cause is not pure, sporco! lezzo! laido e non puro!)
 void Net::Print() const{
-// printa lista di identifier e lista di ip
+    // Identifier list printer
+    for (NetworkItem* item : NetItemList) {
+        std::cout << item->GetName() << std::endl;
+    }
+    // IP print using print method of IP
+    for (IP address : IPList) {
+        address.print();
+    }
 }
 
 //NB i return0 sono per testare alcuni metodi e non farlo rompere i coglioni
 // print del size
 int Net::Size() const{
-    return 0;
+    int size = 0;
+    for (NetworkItem* item : NetItemList) {
+    size = size + item->Size();
+    }
+    return size;
 }
 
 //metodo add
@@ -56,6 +67,10 @@ bool Net::remove(const IP ipremove){
 // method clone, da problemi
 NetworkItem* Net::clone() const {
     return new Net(*this);
+}
+
+// copy constructor
+Net::Net(const Net& other) : NetworkItem(other), IPList(other.IPList), NetItemList(other.NetItemList) {
 }
 
 //distruttore
