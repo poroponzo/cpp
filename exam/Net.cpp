@@ -27,10 +27,13 @@ NetItemList({}){
 // print method for the Net class (override 'cause is not pure, sporco! lezzo! laido e non puro!)
 void Net::Print() const{
     // Identifier list printer
+        std::cout<< "Net Print method invoked:"<< std::endl;
+        std::cout<< "List of items connected to the net:" << std::endl;
     for (NetworkItem* item : NetItemList) {
         std::cout << item->GetName() << std::endl;
     }
-    // IP print using print method of IP
+    std::cout<< "IP still available:" << std::endl;
+    // IP print using print method of IP (funziona)
     for (IP address : IPList) {
         address.print();
     }
@@ -47,9 +50,21 @@ int Net::Size() const{
 }
 
 //metodo add
-bool Net::Add(NetworkItem* item){
-    return 0;
 
+bool Net::Add(NetworkItem* item){
+    
+    if(IPList.size()>0) { //mi chiedo se ho ancora IP disponibili
+    IP iptemp = IPList.front(); //estraggo primo IP
+    IPList.remove(iptemp); //Rimuovo quel IP dalla lista dei disponibili
+    item->setip(iptemp); // setto IP dell'item passato con quello estratto
+    NetItemList.push_back(item); //aggiungo item alla lista degli oggetti connessi
+    std::cout<< "Item added to the net" << std::endl;
+    return true;
+    }
+    else {
+        std::cout << "not enough IP addresses available"<< std::endl;
+        return false;
+    }
 }
 
 // metodo addcopy
@@ -80,6 +95,7 @@ Net::Net(const Net& other) : NetworkItem(other), IPList(other.IPList), NetItemLi
 //lo uccido per rilasciare la memoria
 
 Net::~Net(){
-    for (NetworkItem* element : NetItemList ) 
-		delete  element;
+    // siccome possono essere PC dovrebbero già uccidersi con il loro distruttore
+    // for (NetworkItem* element : NetItemList ) 
+	// 	delete  element;
 }

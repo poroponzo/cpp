@@ -40,10 +40,18 @@ int main() {
     PC gibbone = mm;
     gibbone.Print();
 
-    std::cout << "provo a creare una net default" << std::endl;
+    std::cout << "provo a creare una net default e a tirare il print" << std::endl;
     Net rete;
+    rete.Print();
 
-    
+    std::cout << "ora provo ad aggiungere 1 PC e a tirare il print" << std::endl;
+    std::cout << "mi aspetto printi gli IP forniti (rimanenti) e gli itemname" << std::endl;
+    // get a pointer to nn, fa casino con la memoria, perché??
+    rete.Add(&nn);
+    rete.Print();
+    rete.Add(&mm);
+    rete.Print();
+
 }
 
 

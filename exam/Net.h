@@ -54,7 +54,9 @@ Net(std::string, IP, std::list<IP>);
 Net(const Net& other);
 
 // cloning and referring to Networkitem
+// clone deve clonare un network item e poi inserirlo in itemlist
 NetworkItem* clone() const;
+
 
 // destructor
 ~Net();

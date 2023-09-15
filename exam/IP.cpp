@@ -34,6 +34,16 @@ int IP::GetOctet(int index) const {
 }
 
 
+// definisco operatore ==
+bool IP::operator==(const IP& other) const {
+    for (int i = 0; i < 4; i++) {
+        if (ip[i] != other.ip[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 //metodo print
 void IP::print() const {
         std::cout << std::to_string(ip[0]) +'.'+std::to_string(ip[1])+'.'+std::to_string(ip[2])+'.'+std::to_string(ip[3])

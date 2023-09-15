@@ -9,12 +9,17 @@ public:
 // default costructor 
 IP(); //nell'implementazione dico che sono 4 random (nel cpp)
 IP(int, int, int, int);
-IP(const IP& other); // Dichiarazione del costruttore di copia
+
+// Dichiarazione del costruttore di copia
+IP(const IP& other); 
 
 int GetOctet(int index) const; //dichiarazione metodo per ottenere otteti
 
 //questo va cancellato, serve per testing
 void print() const;
+
+// definisco l'operatore == perché mi serve nel metodo list.remove()
+bool operator==(const IP& other) const;
 
 // default destructor
 ~IP();

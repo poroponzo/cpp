@@ -9,6 +9,11 @@ NetworkItem::NetworkItem() : ItemName("default"), m_ip(192, 168, 1, 1) {
 NetworkItem::NetworkItem(std::string neim, IP ippi) : ItemName(neim), m_ip(ippi) {
 }
 
+void NetworkItem::setip(IP nuovoip) {
+    m_ip = nuovoip; //lo devo scrivere così perché non è un costruttore
+
+}
+
 // Implementazione del distruttore
 NetworkItem::~NetworkItem() {
 }
@@ -16,6 +21,7 @@ NetworkItem::~NetworkItem() {
 //Implementazione del costruttore di copia
 NetworkItem::NetworkItem(const NetworkItem& other) : ItemName(other.ItemName), m_ip(other.m_ip) {
 }
+
 
 // implementazione metodo print
 void NetworkItem::Print() const {       
