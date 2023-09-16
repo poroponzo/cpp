@@ -6,7 +6,7 @@
 PC::PC() : 
 NetworkItem(), 
 memsize(2), 
-mem(new int[memsize]) {
+mem(new int[2]) {
 } 
 
 // nondefault constructor implementation (per ora non worka)
@@ -62,5 +62,5 @@ PC& PC::SetMemory(int *memory, int size) {
 // default destructor implementation
 PC::~PC() {
     // Dealloca la memoria quando l'oggetto viene distrutto
-    delete[] mem;
+    delete mem;
 }
