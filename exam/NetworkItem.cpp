@@ -32,6 +32,8 @@ void NetworkItem::Print() const {
     std::cout << "Item identifier: " <<  ItemName << std::endl;
     std::cout << "IP address: "; 
     m_ip.print();
+    // the line is already drawed by IP.print() method
+    //std::cout<< "______________________________" << std::endl;
 }
 
 

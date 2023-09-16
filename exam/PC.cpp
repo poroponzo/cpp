@@ -5,8 +5,8 @@
 // default constructor implementation
 PC::PC() : 
 NetworkItem(), 
-memsize(8), 
-mem(new int(8)) {
+memsize(2), 
+mem(new int[memsize]) {
 } 
 
 // nondefault constructor implementation (per ora non worka)
@@ -28,13 +28,14 @@ memsize(other.memsize){
 // method print implementation
 void PC::Print() const {
     NetworkItem::Print();
-
-// sta roba non serve però serve come feedback per vedere che non scriviamo cassate
+// rich print, non desired function can be commented out
     std::cout << "memory address: " << mem << std::endl;
     std::cout << "memory size: " << memsize << std::endl;
     std::cout << "memory content: " << std::endl;
-    for (int k = 0; k < memsize; k++)
+    for (int k = 0; k < memsize; k++){
         std::cout << mem[k] << std::endl;
+    }
+    std::cout<< "______________________________" << std::endl;
 }
 
 //method Size

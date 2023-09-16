@@ -51,6 +51,7 @@ void IP::print() const {
         '.'+std::to_string(ip[2])+
         '.'+std::to_string(ip[3])
         << std::endl;
+        std::cout<< "______________________________" << std::endl;
 }
 
 
