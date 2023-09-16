@@ -14,6 +14,10 @@ void NetworkItem::setip(IP nuovoip) {
 
 }
 
+IP NetworkItem::getip(){
+    return m_ip;
+}
+
 // Implementazione del distruttore
 NetworkItem::~NetworkItem() {
 }

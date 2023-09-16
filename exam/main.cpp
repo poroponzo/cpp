@@ -57,6 +57,16 @@ int main() {
     std::cout<<"NB: gibbone è già un clone di mm" << std::endl;
     rete.AddCopy(&gibbone);
     rete.Print();
+
+
+    std::cout<<"test del metodo remove" << std::endl;
+    IP ipremove  = nn.getip();
+    rete.remove(ipremove);
+    rete.Print();
+    std::cout<<"test del metodo size" << std::endl;
+    int baits = rete.Size();
+    std::cout<< "Occupied memory: " + std::to_string(baits) + "Bytes" << std::endl;
+
 }
 
 

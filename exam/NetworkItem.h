@@ -26,6 +26,9 @@ virtual NetworkItem* clone() const =0; //pure virtual, no implementation in .cpp
 // mi serve un metodo set-ip
 void setip(IP);
 
+//metodo per ottenere IP
+IP getip();
+
 
 // Metodo per ottenere il valore di ItemName
 const std::string& GetName() const {
