@@ -11,13 +11,7 @@ class Net : public NetworkItem{
 std::list<IP> IPList;
 
 // list of pointers to generic network items
-// ogni item è definito da Nome e IP e gli Ip li pesco da IPList con add, li rimuovo con remove
-// addcopy fa come add ma inserisce una copia del network item
 std::list<NetworkItem*> NetItemList;
-// mi serve un corrispettivo di memsize per sapere uanto è lunga?
-// posso avere due Ip uguali?
-
-//mi serve sapere quanto è lunga la lista? forse no perché è iterabile con i:
 
 public:
 

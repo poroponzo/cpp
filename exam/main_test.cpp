@@ -36,5 +36,56 @@ std::cout << "verify that memory content is changed"<<  std::endl;
 int v[2] = {11,22};
 pc0.SetMemory(v,2);
 pc0.Print();
+std::cout << "\n" <<  std::endl;
+std::cout << "Now test the Net class:"<<  std::endl;
+std::cout << "A default Net is built, and print method is called:"<<  std::endl;
+Net net0;
+net0.Print();
+net0.Add(&pc0);
+std::cout<< "Now the net add the pc0 \nCheck that content is changed:" << std::endl;
+net0.Print();
+std::cout <<"\n\n"<< std::endl;
+std::cout <<"A new net called solarsystem is initialized \na IP and a list of available IP is passed"<< std::endl;
+IP solar_ip(255,255,255,255);
+// available IP list construction
+std::list<IP> ipavailable({}); 
+for (int i=0;  i<5; i++){
+IP tempip(255,255,1,i);
+ipavailable.push_back(tempip);
+};
+Net SolarSystem("Sun", solar_ip, ipavailable);
+SolarSystem.Print();
+std::cout <<"Try to add to the net pc1, pc2 and pc3"<< std::endl;
+SolarSystem.Add(&pc1);
+SolarSystem.Add(&pc2);
+SolarSystem.Add(&pc3);
+SolarSystem.Print();
+std::cout <<"Add a copy of pc0, then print pc0 and the net"<< std::endl;
+SolarSystem.AddCopy(&pc0);
+SolarSystem.Print();
+int size = SolarSystem.Size();
+std::cout << "print the size of the net" << std::endl;
+std::cout << "net size:" + std::to_string(size)+ " Bytes"<< std::endl;
+std::cout <<"\n"<< std::endl;
+std::cout <<"remove an element using the ip: 255.255.3:"<< std::endl;
+IP iptoremove(255,255,1,3);
+SolarSystem.remove(iptoremove);
+SolarSystem.Print();
+/* Ottengo questo errore: 
+ I have written 5 IP and then print the first:
+192.198.2.0
+Create a default PC and print it:
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+fish: Job 1, './prova' terminated by signal SIGABRT (Abort)
+Però se lo ricompilo tot volte e lo lencio tot volte poi va
+*/
+std::cout <<"creo una lista di puntatori a networkitem contenete 2 PC, una networkitem generica e una net"<< std::endl;
+std::cout <<"invoco il metodo print scorrendo la lista con un for e testo il polimorfismo:" << std::endl;
+PC it;
+std::list<NetworkItem*> itemlist ={&pc4,&pc5, &it , &SolarSystem};
+for(NetworkItem* item : itemlist){
+	item->Print();
+}
 
 }

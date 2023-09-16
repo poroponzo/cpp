@@ -27,12 +27,17 @@ NetItemList({}){
 // print method for the Net class (override 'cause is not pure, sporco! lezzo! laido e non puro!)
 void Net::Print() const{
     // Identifier list printer
-        std::cout<< "Net Print method invoked:"<< std::endl;
-        std::cout<< "List of items connected to the net:" << std::endl;
-    for (NetworkItem* item : NetItemList) {
-        std::cout << item->GetName() << std::endl;
+    std::cout<< "Net: Print method invoked\n"<< std::endl;
+    std::cout<< "List of items connected to the net:" << std::endl;
+    if(NetItemList.size()>0){
+        for (NetworkItem* item : NetItemList) {
+            std::cout << item->GetName() << std::endl;
+        }
     }
-    std::cout<< "______________________________" << std::endl;
+    else{
+        std::cout<<"No item connected to the net" << std::endl;
+    }    
+    std::cout<< "\n" << std::endl;
     std::cout<< "IP still available:" << std::endl;
     // IP print using print method of IP (funziona)
     if (IPList.size()>0){
@@ -41,7 +46,7 @@ void Net::Print() const{
         }
     }
     else {
-        std::cout<<"No more IP available"<< std::endl;
+        std::cout<<"ERROR: No more IP available"<< std::endl;
     }
     
     std::cout<< "______________________________" << std::endl;
@@ -65,12 +70,13 @@ bool Net::Add(NetworkItem* item){
         IPList.remove(iptemp); //Rimuovo quel IP dalla lista dei disponibili
         item->setip(iptemp); // setto IP dell'item passato con quello estratto
         NetItemList.push_back(item); //aggiungo item alla lista degli oggetti connessi
-        std::cout<< "Item added to the net" << std::endl;
+        std::cout<< "Net: item added to the net" << std::endl;
         std::cout<< "______________________________" << std::endl;
+        //delete item;
         return true;
     }
     else {
-        std::cout << "not enough IP addresses available"<< std::endl;
+        std::cout << "ERROR: not enough IP addresses available"<< std::endl;
         return false;
     }
 }
