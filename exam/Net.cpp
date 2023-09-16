@@ -32,11 +32,19 @@ void Net::Print() const{
     for (NetworkItem* item : NetItemList) {
         std::cout << item->GetName() << std::endl;
     }
+    std::cout<< "______________________________" << std::endl;
     std::cout<< "IP still available:" << std::endl;
     // IP print using print method of IP (funziona)
+    if (IPList.size()>0){
     for (IP address : IPList) {
         address.print();
+        }
     }
+    else {
+        std::cout<<"No more IP available"<< std::endl;
+    }
+    
+    std::cout<< "______________________________" << std::endl;
 }
 
 //NB i return0 sono per testare alcuni metodi e non farlo rompere i coglioni
@@ -54,12 +62,13 @@ int Net::Size() const{
 bool Net::Add(NetworkItem* item){
     
     if(IPList.size()>0) { //mi chiedo se ho ancora IP disponibili
-    IP iptemp = IPList.front(); //estraggo primo IP
-    IPList.remove(iptemp); //Rimuovo quel IP dalla lista dei disponibili
-    item->setip(iptemp); // setto IP dell'item passato con quello estratto
-    NetItemList.push_back(item); //aggiungo item alla lista degli oggetti connessi
-    std::cout<< "Item added to the net" << std::endl;
-    return true;
+        IP iptemp = IPList.front(); //estraggo primo IP
+        IPList.remove(iptemp); //Rimuovo quel IP dalla lista dei disponibili
+        item->setip(iptemp); // setto IP dell'item passato con quello estratto
+        NetItemList.push_back(item); //aggiungo item alla lista degli oggetti connessi
+        std::cout<< "Item added to the net" << std::endl;
+        std::cout<< "______________________________" << std::endl;
+        return true;
     }
     else {
         std::cout << "not enough IP addresses available"<< std::endl;
@@ -69,7 +78,20 @@ bool Net::Add(NetworkItem* item){
 
 // metodo addcopy
 bool Net::AddCopy(const NetworkItem* item){
-    return 0;
+    if(IPList.size()>0) { //mi chiedo se ho ancora IP disponibili
+        IP iptemp = IPList.front(); //estraggo primo IP
+        IPList.remove(iptemp); //Rimuovo quel IP dalla lista dei disponibili
+        // a differenza di Add, qui faccio un clone e poi uso il clone
+        NetworkItem* copy = item->clone();
+        copy->setip(iptemp); // setto IP dell'item passato con quello estratto
+        NetItemList.push_back(copy); //aggiungo item alla lista degli oggetti connessi
+        std::cout<< "Item added to the net" << std::endl;
+        return true;
+    }
+    else {
+        std::cout << "not enough IP addresses available"<< std::endl;
+        return false;
+    }
 
 }
 
@@ -79,13 +101,19 @@ bool Net::remove(const IP ipremove){
     return 0;
 }
 
-// method clone, da problemi
+
+// method clone, da problemi, ??
 NetworkItem* Net::clone() const {
     return new Net(*this);
 }
 
+
+
 // copy constructor
-Net::Net(const Net& other) : NetworkItem(other), IPList(other.IPList), NetItemList(other.NetItemList) {
+Net::Net(const Net& other) : 
+NetworkItem(other), 
+IPList(other.IPList), 
+NetItemList(other.NetItemList) {
 }
 
 //distruttore

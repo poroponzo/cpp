@@ -46,12 +46,17 @@ int main() {
 
     std::cout << "ora provo ad aggiungere 1 PC e a tirare il print" << std::endl;
     std::cout << "mi aspetto printi gli IP forniti (rimanenti) e gli itemname" << std::endl;
-    // get a pointer to nn, fa casino con la memoria, perché??
+    // devo unsare &pcname perché i metodi add e addcopy accettano un puntatore ad un oggetto di quella classe
     rete.Add(&nn);
     rete.Print();
+    
     rete.Add(&mm);
     rete.Print();
 
+    std::cout<<"ho invocato il metodo addcopy di rete su gibbone, poi printo:" << std::endl;
+    std::cout<<"NB: gibbone è già un clone di mm" << std::endl;
+    rete.AddCopy(&gibbone);
+    rete.Print();
 }
 
 

@@ -3,17 +3,24 @@
 #include "PC.h"
 
 // default constructor implementation
-PC::PC() : NetworkItem(), memsize(8), mem(new int(8)) {
+PC::PC() : 
+NetworkItem(), 
+memsize(8), 
+mem(new int(8)) {
 } 
 
 // nondefault constructor implementation (per ora non worka)
 PC::PC(std::string naim2, IP ippi2, int memory) : 
 NetworkItem(naim2, ippi2), 
 memsize(memory), 
-mem(new int[memory]) {} 
+mem(new int[memory]){
+} 
 
 //copy constructor
-PC::PC(const PC& other) : NetworkItem(other) , mem(new int[other.memsize]), memsize(other.memsize){
+PC::PC(const PC& other) : 
+NetworkItem(other), 
+mem(new int[other.memsize]), 
+memsize(other.memsize){
 	for (int k = 0; k < memsize; k++) 
 		mem[k] = other.mem[k];
 }

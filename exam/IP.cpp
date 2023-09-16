@@ -46,8 +46,11 @@ bool IP::operator==(const IP& other) const {
 
 //metodo print
 void IP::print() const {
-        std::cout << std::to_string(ip[0]) +'.'+std::to_string(ip[1])+'.'+std::to_string(ip[2])+'.'+std::to_string(ip[3])
-    << std::endl;
+        std::cout << std::to_string(ip[0]) +
+        '.'+std::to_string(ip[1])+
+        '.'+std::to_string(ip[2])+
+        '.'+std::to_string(ip[3])
+        << std::endl;
 }
 
 
